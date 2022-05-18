@@ -1,0 +1,280 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <head>
+        <title>web page</title>
+<script >
+function formValidation()
+{
+var uid = document.registration.userid;
+var passid = document.registration.passid;
+var uname = document.registration.username;
+var uadd = document.registration.address;
+var ucountry = document.registration.country;
+var uzip = document.registration.zip;
+var uemail = document.registration.email;
+var umsex = document.registration.msex;
+var ufsex = document.registration.fsex; if(userid_validation(uid,5,12))
+{
+if(passid_validation(passid,7,12))
+{
+if(allLetter(uname))
+{
+if(alphanumeric(uadd))
+{
+if(countryselect(ucountry))
+{
+if(allnumeric(uzip))
+{
+if(ValidateEmail(uemail))
+{
+if(validsex(umsex,ufsex))
+{
+}
+}
+}
+}
+}
+}
+}
+}
+
+return false;
+}
+function userid_validation(uid,mx,my)
+{
+var uid_len = uid.value.length;
+if (uid_len == 0 || uid_len >= my || uid_len < mx)
+{
+alert("User Id should not be empty / length be between "+mx+" to "+my);
+uid.focus();
+return false;
+}
+return true;
+}
+function CheckPassword(inputtxt) 
+{ 
+var paswd=  /^(?=.[0-9])(?=.[!@#$%^&*])[a-zA-Z0-9@#$]{7,15}$/;
+if(inputtxt.value.match(paswd)) 
+{ 
+alert('Correct, try another...')
+return true;
+}
+else
+{ 
+alert('Wrong...!')
+return false;
+}
+} function allLetter(uname)
+{
+var letters = /^[A-Za-z]+$/;
+if(uname.value.match(letters))
+{
+return true;
+}
+else
+{
+alert('Username must have alphabet characters only');
+uname.focus();
+return false;
+}
+}
+function alphanumeric(uadd)
+{
+var letters = /^[0-9a-zA-Z]+$/;
+if(uadd.value.match(letters))
+{
+return true;
+}
+else
+{
+alert('User address must have alphanumeric characters only');
+uadd.focus();
+return false;
+
+}
+}
+function countryselect(ucountry)
+{
+if(ucountry.value == "Default")
+{
+alert('Select your country from the list');
+ucountry.focus();
+return false;
+}
+else
+{
+return true;
+}
+}
+function allnumeric(uzip)
+{
+var numbers = /^[0-9]+$/;
+if(uzip.value.match(numbers))
+{
+return true;
+}
+else
+{
+alert('ZIP code must have numeric characters only');
+uzip.focus();
+return false;
+}
+}
+function ValidateEmail(uemail)
+{
+var mailformat = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
+if(uemail.value.match(mailformat))
+{
+return true;
+}
+else
+{
+alert("You have entered an invalid email address!");
+uemail.focus();
+return false;
+}
+}
+</script>  
+        <style>
+a:hover {
+  color: hotpink;
+}
+div.absolute{
+  color:black;
+  background-color: lightgrey;
+  width: 320px;
+  border: 5px solid black;
+  padding: 50px;
+  margin: 20px;
+ text-transform: capitalize;
+ font-style: italic;
+}
+#rcorners {
+  border-radius: 25px;
+background:url(https://www.logolynx.com/images/logolynx/f5/f56ed6ae6dca9cd87d8393ab747008ad.jpeg);
+  background-position: left top;
+  background-repeat: repeat;
+  padding: 20px; 
+  width: 200px;
+  height: 150px;  
+}
+form{
+          text-transform: capitalize; 
+           color:black;
+           font-size:20px;
+           padding:35px
+         }
+p{
+        color:black;
+ text-shadow: 2px 2px 4px #000000;
+}
+
+
+h2{
+        color:black;
+}
+canvas{
+     position:relative;
+     left: 30%;
+}
+body{   
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;    
+}
+div.absolute {
+  position: absolute;
+  bottom:0px;
+  right:0;
+  width: 200px;
+  height: 100px;
+  border: 3px solid #73AD21;
+}
+ </style>
+<canvas id="myCanvas" width="500" height="200" style=" solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+<script>
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.font = "30px Arial";
+ctx.position ="center";
+ctx.strokeText("WELCOME TO MY PAGE",100,150);
+
+           
+</script>
+<script>
+ var userName, userAge;
+            var nameData = [];
+            var gradeData = [];
+
+
+            function addToArray() {
+                txtName = document.getElementById("txtName").value;
+                txtGrade = parseInt(document.getElementById("txtGrade").value);
+
+                alert(txtName + " " + txtGrade);
+                nameData.push(txtName);
+                gradeData.push(txtGrade);
+
+                document.getElementById("txtName").focus();
+                document.getElementById("txtName").value = "";
+                document.getElementById("txtGrade").value = "";
+
+
+            }
+
+                }
+</script>
+    </head>
+    <body onload="showPrompt()"+"document.registration.userid.focus()">
+    
+<h3 style="color:black"> FILL IN THE FOLLOWING DETAILS FOR THE  VALIDATION FORM!</h3>
+
+<form name='registration' onSubmit="return formValidation();">
+
+<label for="userid">User id:</label>&nbsp;<input type="text" name="userid" size="12" /></br>
+<label for="passid">Password:</label>&nbsp;<input type="password" id="psw" name="psw" pattern="(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter,a special character and at least 8 or more characters" required></br>
+<label for="username">Name: </label>&nbsp;<input type="text" name="username" size="50" /></br>
+<label for="address">Address:</label>&nbsp;<input type="text" name="address" size="50" /></br>
+<label for="country">Country:</label>&nbsp;<select name="country">
+<option selected="" value="Default">(Please select a country)</option>
+<option value="AF">Australia</option>
+<option value="AL">Canada</option>
+<option value="DZ">India</option>
+<option value="AS">Russia</option>
+<option value="AD">USA</option>
+</select>
+<br><label for="zip">ZIP Code:</label>&nbsp;<input type="text" name="zip" /></br>
+<label for="email">Email:</label>&nbsp;<input type="text" name="email" size="50" /></br>
+<label id="gender">Gender:</label>&nbsp;<input type="radio" name="msex" value="Male" /><span>Male</span></br>
+<input type="radio" name="fsex" value="Female" /><span>Female</span></br>
+<label>Language:</label>&nbsp;<input type="checkbox" name="en" value="en" checked /><span>English</span><input type="checkbox" name="nonen" value="noen" /><span>Non English</span>
+<br><label for="desc">About:</label>&nbsp;&nbsp;  <textarea name="desc" id="desc"></textarea></br>
+<br><br><input type="submit" name="submit" value="Submit" /></br></br>
+</form>
+  <table style="width:40%">
+  <tr>
+    <th>Name</th>
+    <th colspan="2">Mobile number</th>
+  </tr>
+  <tr>
+    <td>sri</td>
+    <td>55577854</td>
+  </tr>
+</table>
+</br>
+
+</script>
+<svg width="400" height="100">
+  <rect width="100" height="90" style="fill:rgb(0,0,255);stroke-width:5;stroke:rgb(0,0,0)" />
+<text fill="#ffffff" font-size="25" font-family="Arial" x="30" y="43">SK</text>
+</svg>
+<div class="absolute">THANK YOU!!</div>
+
+           </body>
+</html>
